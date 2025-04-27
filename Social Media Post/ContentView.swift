@@ -9,6 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
+        VStack(){
+            
+            Image(.post)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding()
+                .cornerRadius(60)
+            
+
+            
+        }
+        
 
         
     }
