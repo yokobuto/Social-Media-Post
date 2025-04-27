@@ -12,8 +12,9 @@ struct ContentView: View {
     @State private var isLiked = false
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing){
-            VStack(){
+        ZStack(){
+            
+            VStack(alignment: .leading){
                 Image(.post)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -22,17 +23,32 @@ struct ContentView: View {
                     .onTapGesture(count: 2) {
                         likeUnlikePosting()
                     }
+                
+                HStack(alignment: .bottom){
+                    
+                    Text("Me with my girls")
+                        .font(.callout)
+                        .fontWeight(.bold)
+                        
+                    Text("Barcelona")
+                        .font(.caption)
+                    
+                    
+                }.padding(.leading)
+                
             }
+            
             
             Image (systemName: "heart")
                 .symbolVariant(isLiked ? .fill : .none)
                 .animation(.spring, value: isLiked)
                 .imageScale(.large)
                 .foregroundStyle(.red)
-                .padding()
                 .onTapGesture {
                     likeUnlikePosting()
                 }
+
+            
         }
 
     }
