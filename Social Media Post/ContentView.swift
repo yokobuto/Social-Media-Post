@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isLiked = false
+    
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             VStack(){
@@ -16,15 +19,28 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .padding()
                     .cornerRadius(60)
+                    .onTapGesture(count: 2) {
+                        likeUnlikePosting()
+                    }
             }
             
-            Image(systemName: "heart")
+            Image (systemName: "heart")
+                .symbolVariant(isLiked ? .fill : .none)
+                .animation(.spring, value: isLiked)
                 .imageScale(.large)
                 .foregroundStyle(.red)
                 .padding()
-            
+                .onTapGesture {
+                    likeUnlikePosting()
+                }
         }
+
     }
+    
+    func likeUnlikePosting(){
+        isLiked.toggle()
+    }
+    
 }
 
 #Preview {
