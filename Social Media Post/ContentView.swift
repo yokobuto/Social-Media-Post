@@ -28,7 +28,7 @@ struct ContentView: View {
                     
                     Image (systemName: "heart")
                         .symbolVariant(isLiked ? .fill : .none)
-                        .animation(.spring, value: isLiked)
+                        .animation(.bouncy, value: isLiked)
                         .imageScale(.large)
                         .foregroundStyle(.red)
                         .onTapGesture {
@@ -39,7 +39,7 @@ struct ContentView: View {
                 
                 HStack(alignment: .bottom){
                     
-                    Text("Me with my girls")
+                    Text("Me with the girls")
                         .font(.callout)
                         .fontWeight(.bold)
                         
@@ -47,16 +47,11 @@ struct ContentView: View {
                         .font(.caption)
                     
                     
-                }.padding(.leading)
+                }
+                .multilineTextAlignment(.leading)
+                .padding(.leading)
                 
             }
-            
-            
-
-
-            
-        
-
     }
     
     func likeUnlikePosting(){
