@@ -12,17 +12,30 @@ struct ContentView: View {
     @State private var isLiked = false
     
     var body: some View {
-        ZStack(){
             
             VStack(alignment: .leading){
-                Image(.post)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .cornerRadius(60)
-                    .onTapGesture(count: 2) {
-                        likeUnlikePosting()
-                    }
+                
+                ZStack(alignment: .bottomTrailing){
+                    
+                    Image(.post)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                        .cornerRadius(60)
+                        .onTapGesture(count: 2) {
+                            likeUnlikePosting()
+                        }
+                    
+                    Image (systemName: "heart")
+                        .symbolVariant(isLiked ? .fill : .none)
+                        .animation(.spring, value: isLiked)
+                        .imageScale(.large)
+                        .foregroundStyle(.red)
+                        .onTapGesture {
+                            likeUnlikePosting()
+                        }
+                        .padding()
+                }
                 
                 HStack(alignment: .bottom){
                     
@@ -39,17 +52,10 @@ struct ContentView: View {
             }
             
             
-            Image (systemName: "heart")
-                .symbolVariant(isLiked ? .fill : .none)
-                .animation(.spring, value: isLiked)
-                .imageScale(.large)
-                .foregroundStyle(.red)
-                .onTapGesture {
-                    likeUnlikePosting()
-                }
+
 
             
-        }
+        
 
     }
     
